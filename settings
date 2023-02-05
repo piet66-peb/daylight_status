@@ -1,0 +1,50 @@
+#!/bin/bash
+#h-------------------------------------------------------------------------------
+#h
+#h Name:         settings
+#h Type:         Linux shell script
+#h Purpose:      settings for packet daylight_status
+#h Project:      
+#h Usage:        . `dirname $(readlink -f $0)`/settings
+#h Result:       
+#h Examples:     
+#h Outline:      
+#h Resources:    
+#h Platforms:    Linux
+#h Authors:      peb piet66
+#h Version:      V1.0.0 2023-01-28/peb
+#v History:      V1.0.0 2022-12-25/peb first version
+#h Copyright:    (C) piet66 2022
+#h License:      MIT
+#h
+#h-------------------------------------------------------------------------------
+
+MODULE='settings';
+VERSION='V1.0.0'
+WRITTEN='2023-01-28/peb'
+
+#coordinates for sunset.py:
+LONGITUDE=11.18639
+LATITUDE=49.77878
+
+#values for database:
+NIGHT=1
+DAY=0
+
+#storage control
+STORE_LOCAL_RBB=true
+STORE_REMOTE_RBB=false
+
+##parameters for rrdtool:
+export RRD_NAME=daylight
+
+##local database:
+export RRD_FILE=${RRD_NAME}.rrd
+export RRD_DIR=../RRDTool_API/rrd
+
+##remote database:
+export IP=rrd_server
+export PORT=5001
+export USER_PW=username:secret
+export REPEAT=5m
+
